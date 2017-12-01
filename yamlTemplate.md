@@ -69,3 +69,17 @@ spec:
           serviceName: ghost
           servicePort: 80
 ```
+### PersistentVolume
+```yaml
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: pv-volume
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /path
+```
