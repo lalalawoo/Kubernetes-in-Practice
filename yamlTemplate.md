@@ -1,6 +1,6 @@
-### Pod Template
+### Pod
 #### using secret as environment variable
-..yaml
+..sh
 apiVersion: v1
 kind: Pod
 metadata:
@@ -17,7 +17,7 @@ spec:
     secret:
       secretName: q15secret 
 #### using secret in volumn
-..yaml
+..sh
 apiVersion: v1
 kind: Pod
 metadata:
@@ -33,7 +33,7 @@ spec:
             name: q15secret 
             key: password
 #### with (non-persistent)volume
-..yaml
+..sh
 apiVersion: v1
 kind: Pod
 metadata:
@@ -50,3 +50,18 @@ spec:
   - name: q16vol
     emptyDir: {}
 
+### Deployment
+#### with ingress access
+..sh
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-demo
+spec:
+  rules:
+  - host: ingress.demo.com
+    http:
+      paths:
+      - backend:
+          serviceName: ghost
+          servicePort: 80
