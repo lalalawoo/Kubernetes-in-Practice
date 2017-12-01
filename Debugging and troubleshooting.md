@@ -29,5 +29,10 @@ for i in `kubectl get pods | awk '{print $1}'`; do kubectl delete pod $i; done
 ```sh
 systemctl start kubelet.service
 ```
+##### check cluster working status
+```sh
+kubectl get componentstatuses
+```
+then SSH to master and enable / restart the service that is not running. 
 
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/
