@@ -70,7 +70,7 @@ spec:
   nodeSelector:
     disk: ssk
 ```
-#### using secret as environment variable
+#### using secret in volume
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -88,7 +88,7 @@ spec:
     secret:
       secretName: q15secret
 ```
-#### using secret in volumn
+#### using secret as env var
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -123,9 +123,69 @@ spec:
   - name: q16vol
     emptyDir: {}
 ```
+or
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vol
+  labels:
+    app: vol
+spec:
+  containers:
+  - image: busybox
+    command:
+      - sleep
+      - "3600"
+    volumeMounts:
+    - mountPath: /busy
+      name: test
+    imagePullPolicy: IfNotPresent
+    name: busy
+  - image: busybox
+    command:
+      - sleep
+      - "3600"
+    volumeMounts:
+    - mountPath: /box
+      name: test
+    imagePullPolicy: IfNotPresent
+    name: box
+  restartPolicy: Always
+  volumes:
+  - name: test
+    emptyDir: {}
+```
+*two container share same volume though mounted in different paths*
 #### expose pod to service
 ```sh
 kubectl expose pod <name> --port=<port> --name=frontend-service
+```
+#### mount configmap
+##### create configmap
+```sh
+$ kubectl create configmap map --from-file=configmap.md
+```
+##### use configmap to create pod
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-test
+spec:
+  containers:
+  - image: busybox
+    command:
+      - sleep
+      - "3600"
+    volumeMounts:
+    - mountPath: /config
+      name: map
+    name: busy
+  volumes:
+    - name: map
+      configMap:
+        name: map
 ```
 ### Deployment
 #### with ingress access
