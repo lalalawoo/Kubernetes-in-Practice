@@ -83,3 +83,23 @@ spec:
   hostPath:
     path: /path
 ```
+### JOb
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: myjob
+spec:
+  completions: 4
+  parallelism: 6
+  template:
+    metadata:
+      name: myjob
+    spec:
+      containers:
+      - name: myjob
+        image: perl
+        command: ["perl", "-wle", "print \'Beijing\'"]
+      restartPolicy: Never
+  backoffLimit: 4
+```
