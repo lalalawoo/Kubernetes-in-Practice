@@ -1,4 +1,75 @@
 ### Pod
+#### with initContainer
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: question6
+  namespace: default
+  labels:
+    app: question6
+spec:
+  containers:
+  - name: redis
+    image: redis
+    volumeMounts:
+    - mountPath: /path
+      name: vol
+    imagePullPolicy: IfNotPresent
+  initContainers:
+  - name: create-file
+    image: redis
+    command: ["/bin/bash"]
+    args: ['-c', 'touch /init/file.txt']
+    volumeMounts:
+    - mountPath: /init
+      name: vol
+  volumes:
+  - name: vol
+    emptyDir: {}
+```
+#### with multi-containers
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: question7
+  namespace: default
+  labels:
+    app: question7
+spec:
+  containers:
+  - name: redis
+    image: redis
+    imagePullPolicy: IfNotPresent
+  - name: nginx
+    image: nginx
+    imagePullPolicy: IfNotPresent
+ - name: memcached
+    image: memcached
+    imagePullPolicy: IfNotPresent
+  restartPolicy: Always
+```
+#### with nodeSelector
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: question8
+  namespace: default
+  labels:
+    question: question8
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    command:
+    - sleep
+    - "3600"
+    imagePullPolicy: IfNotPresent
+  nodeSelector:
+    disk: ssk
+```
 #### using secret as environment variable
 ```yaml
 apiVersion: v1
@@ -52,7 +123,10 @@ spec:
   - name: q16vol
     emptyDir: {}
 ```
-
+#### expose pod to service
+```sh
+kubectl expose pod <name> --port=<port> --name=frontend-service
+```
 ### Deployment
 #### with ingress access
 ```yaml
