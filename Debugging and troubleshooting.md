@@ -25,5 +25,9 @@ kubectl get nodes
 ```sh
 for i in `kubectl get pods | awk '{print $1}'`; do kubectl delete pod $i; done
 ```
+##### if kubelet not working, try:
+```sh
+systemctl start kubelet.service
+```
 
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/
