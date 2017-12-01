@@ -43,6 +43,15 @@ sudo systemctl restart kubelet
 ```sh
 systemctl status kubelet
 ```
-Check local logs for the POD name (e.g. nginx):
-   
-        grep "nginx" /var/log/syslog
+##### 5. Check local logs for the POD name (e.g. nginx):
+```sh
+grep "nginx" /var/log/syslog
+```
+OR
+```sh
+journalctl -u kubelet | grep nginx
+```
+##### 6. Check kubectl:
+```sh
+kubectl get pods
+```
