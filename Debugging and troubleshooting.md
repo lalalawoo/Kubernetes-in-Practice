@@ -25,3 +25,5 @@ kubectl get nodes
 ```sh
 for i in `kubectl get pods | awk '{print $1}'`; do kubectl delete pod $i; done
 ```
+
+https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/
