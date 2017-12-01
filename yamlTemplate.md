@@ -15,7 +15,8 @@ spec:
   volumes:
   - name: vol
     secret:
-      secretName: q15secret 
+      secretName: q15secret
+```
 #### using secret in volumn
 ```yaml
 apiVersion: v1
@@ -32,6 +33,7 @@ spec:
           secretKeyRef:
             name: q15secret 
             key: password
+```
 #### with (non-persistent)volume
 ```yaml
 apiVersion: v1
@@ -49,6 +51,7 @@ spec:
   volumes:
   - name: q16vol
     emptyDir: {}
+```
 
 ### Deployment
 #### with ingress access
@@ -65,3 +68,4 @@ spec:
       - backend:
           serviceName: ghost
           servicePort: 80
+```
