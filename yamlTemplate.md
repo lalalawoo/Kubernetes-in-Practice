@@ -1,6 +1,6 @@
 ### Pod
 #### using secret as environment variable
-..java
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -17,7 +17,7 @@ spec:
     secret:
       secretName: q15secret 
 #### using secret in volumn
-..java
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -33,7 +33,7 @@ spec:
             name: q15secret 
             key: password
 #### with (non-persistent)volume
-..java
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -52,7 +52,7 @@ spec:
 
 ### Deployment
 #### with ingress access
-..java
+```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
