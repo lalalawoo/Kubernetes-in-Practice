@@ -53,7 +53,7 @@ nirmata@jim-sandbox-vm-2:~$ curl --cacert /etc/etcd/ca.pem https://10.20.0.8:644
   "platform": "linux/amd64"
 }
 ```
-*#### Alternate solution*
+#### * Alternate solution*
 
 #### Copy all certs to a directory like “/etc/kubernetes/ssl”
 
