@@ -1,6 +1,6 @@
-###Pod Template
+### Pod Template
 #### using secret as environment variable
-..sh
+..yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -17,7 +17,7 @@ spec:
     secret:
       secretName: q15secret 
 #### using secret in volumn
-..sh
+..yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -32,4 +32,21 @@ spec:
           secretKeyRef:
             name: q15secret 
             key: password
+#### with (non-persistent)volume
+..yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: question16
+  namespace: default
+spec:
+  containers:
+  - name: question16
+    Image: nginx
+    volumeMounts:
+    - mountPath: /path
+      name: q16vol
+  volumes:
+  - name: q16vol
+    emptyDir: {}
 
