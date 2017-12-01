@@ -33,6 +33,6 @@ systemctl start kubelet.service
 ```sh
 kubectl get componentstatuses
 ```
-then SSH to master and enable / restart the service that is not running. 
+##### then SSH to master and enable / restart the service that is not running. 
 
 https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/
