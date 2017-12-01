@@ -1,6 +1,8 @@
 https://kubernetes.io/docs/tasks/administer-cluster/static-pod/
 https://github.com/kelseyhightower/standalone-kubelet-tutorial
 
+/etcd/kubernetes/manifests
+
 ##### 1. Edit the kubelet systemd configuration and pass in the --pod-manifests-path option:
 ```sh
 vi /etc/systemd/system/kubelet.service
