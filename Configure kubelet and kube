@@ -1,0 +1,10 @@
+https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/09-bootstrapping-kubernetes-workers.md#configure-the-kubelet
+
+https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/09-bootstrapping-kubernetes-workers.md#configure-the-kubernetes-proxy
+
+Customize the certificates, etc.
+
+Create kubeconfig file by using the kubectl config file (~/.kube/config).
+Change it to use certificates and point to the provided worker certs.
+Update systemd unit files and start services
+Verify node is Ready using kubectl
