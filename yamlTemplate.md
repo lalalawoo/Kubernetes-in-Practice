@@ -83,7 +83,42 @@ spec:
   hostPath:
     path: /path
 ```
-### JOb
+### DaemonSet
+```yaml
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: special
+spec:
+  template:
+    metadata:
+      labels:
+        name: special
+    spec:
+      containers:
+      - name: special
+        image: nginx
+```
+##### From version 1.8.0, the apiVersion of DaemonSet becomes apps/v1beta2, and a pod selector ( .spec.selector ) must be specified, which matches the labels of the .spec.template. 
+```yaml
+apiVersion: apps/v1beta2
+kind: DaemonSet
+metadata:
+  name: special
+spec:
+  selector:
+    matchLabels:
+      name: special
+  template:
+    metadata:
+      labels:
+        name: special
+    spec:
+      containers:
+      - name: special
+        image: nginx
+```
+### Job
 ```yaml
 apiVersion: batch/v1
 kind: Job
