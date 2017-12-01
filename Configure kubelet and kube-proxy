@@ -8,3 +8,7 @@ Create kubeconfig file by using the kubectl config file (~/.kube/config).
 Change it to use certificates and point to the provided worker certs.
 Update systemd unit files and start services
 Verify node is Ready using kubectl
+
+
+https://github.com/kelseyhightower/intro-to-kubernetes-workshop/blob/master/labs/install-and-configure-kubelet.md
+https://github.com/kelseyhightower/intro-to-kubernetes-workshop/blob/master/labs/install-and-configure-kube-proxy.md
